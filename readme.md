@@ -5,15 +5,15 @@
 2. Save all the volumes locally:
 
   ```
-  docker run --rm --volume dockervolumesaveload_postgres-data:/mybackup -v $(pwd):/backup ubuntu tar czvf /backup/data.tar.gz /mybackup
+  docker run --rm --volume dockervolumes_postgres-data:/mybackup -v $(pwd):/backup ubuntu tar czvf /backup/data.tar.gz /mybackup
   ```
 
   ```
-  docker run --rm --volume dockervolumesaveload_postgres-etc:/mybackup -v $(pwd):/backup ubuntu tar czvf /backup/etc.tar.gz /mybackup
+  docker run --rm --volume dockervolumes_postgres-etc:/mybackup -v $(pwd):/backup ubuntu tar czvf /backup/etc.tar.gz /mybackup
   ```
 
   ```
-  docker run --rm --volume dockervolumesaveload_postgres-log:/mybackup -v $(pwd):/backup ubuntu tar czvf /backup/log.tar.gz /mybackup
+  docker run --rm --volume dockervolumes_postgres-log:/mybackup -v $(pwd):/backup ubuntu tar czvf /backup/log.tar.gz /mybackup
   ```
 
 3. Login into psql, write some data:
@@ -30,15 +30,15 @@
 5. Reload all the volumes back:
 
   ```
-  docker run --rm --volume dockervolumesaveload_postgres-data:/mybackup -v $(pwd):/backup ubuntu bash -c "cd /mybackup && tar xzvf /backup/data.tar.gz --strip 1"
+  docker run --rm --volume dockervolumes_postgres-data:/mybackup -v $(pwd):/backup ubuntu bash -c "cd /mybackup && tar xzvf /backup/data.tar.gz --strip 1"
   ```
 
   ```
-  docker run --rm --volume dockervolumesaveload_postgres-etc:/mybackup -v $(pwd):/backup ubuntu bash -c "cd /mybackup && tar xzvf /backup/etc.tar.gz --strip 1"
+  docker run --rm --volume dockervolumes_postgres-etc:/mybackup -v $(pwd):/backup ubuntu bash -c "cd /mybackup && tar xzvf /backup/etc.tar.gz --strip 1"
   ```
 
   ```
-  docker run --rm --volume dockervolumesaveload_postgres-log:/mybackup -v $(pwd):/backup ubuntu bash -c "cd /mybackup && tar xzvf /backup/log.tar.gz --strip 1"
+  docker run --rm --volume dockervolumes_postgres-log:/mybackup -v $(pwd):/backup ubuntu bash -c "cd /mybackup && tar xzvf /backup/log.tar.gz --strip 1"
   ```
 
 6. Bring up the containers again ( don't build them up)
